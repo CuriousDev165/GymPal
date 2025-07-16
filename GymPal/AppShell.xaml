@@ -7,7 +7,7 @@
     Title="GymPal">
 
     <ShellContent
-        Title="Home"
+        Title="GymPal"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
