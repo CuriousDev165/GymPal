@@ -15,8 +15,15 @@ namespace GymPal
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Register pages here.
+            builder.Services.AddSingleton<MainPage>();
+
+            // Register viewmodels here.
+
+            // Register services here.
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
