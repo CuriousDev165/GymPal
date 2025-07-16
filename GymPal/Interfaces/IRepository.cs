@@ -31,24 +31,24 @@ namespace GymPal.Interfaces
         /// Retrieve a single record from the database.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="record"></param>
+        /// <param name="argument"></param>
         /// <returns>The first entity returned by the operation.</returns>
-        Task<T> GetRecordAsync<T>(T record) where T : class;
+        Task<T> GetRecordAsync<T>(T argument) where T : class;
 
         /// <summary>
         /// Retrieve multiple records from the database in a single operation.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="records"></param>
+        /// <param name="argument"></param>
         /// <returns>All records returned by the operation.</returns>
-        Task<T> GetRecordsAsync<T>(IEnumerable<T> records) where T : class;
+        Task<IEnumerable<T>> GetRecordsAsync<T>(T argument) where T : class;
 
         /// <summary>
         /// Delete a single record from the database.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="record"></param>
+        /// <param name="argument"></param>
         /// <returns>The number of rows affected by the operation.</returns>
-        Task<int> DeleteRecordAsync<T>(T record) where T : class;
+        Task<int> DeleteRecordAsync<T>(T argument) where T : class;
     }
 }
