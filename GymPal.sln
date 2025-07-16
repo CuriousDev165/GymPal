@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPal", "GymPal\GymPal.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPal.UnitTests", "GymPalUnitTests\GymPal.UnitTests.csproj", "{4292D45D-F08E-42FC-84E7-37330A0B4C6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPal.Core", "GymPal.Core\GymPal.Core.csproj", "{B8B12998-CD59-42A2-95BC-4F7360A5EAE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{4292D45D-F08E-42FC-84E7-37330A0B4C6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4292D45D-F08E-42FC-84E7-37330A0B4C6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4292D45D-F08E-42FC-84E7-37330A0B4C6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8B12998-CD59-42A2-95BC-4F7360A5EAE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8B12998-CD59-42A2-95BC-4F7360A5EAE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8B12998-CD59-42A2-95BC-4F7360A5EAE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8B12998-CD59-42A2-95BC-4F7360A5EAE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
