@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPal", "GymPal\GymPal.csproj", "{3861E6FF-3222-42A5-BF77-8D2E7284A86E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPalUnitTests", "GymPalUnitTests\GymPalUnitTests.csproj", "{4292D45D-F08E-42FC-84E7-37330A0B4C6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymPal.UnitTests", "GymPalUnitTests\GymPal.UnitTests.csproj", "{4292D45D-F08E-42FC-84E7-37330A0B4C6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
