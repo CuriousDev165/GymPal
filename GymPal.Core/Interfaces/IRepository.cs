@@ -21,14 +21,6 @@ namespace GymPal.Core.Interfaces
         Task<int> AddRecordAsync<T>(T record) where T : class;
 
         /// <summary>
-        /// Retrieve a single record from the database.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="argument"></param>
-        /// <returns>The first entity returned by the operation.</returns>
-        Task<T> GetRecordAsync<T>(T argument) where T : class;
-
-        /// <summary>
         /// Retrieve multiple records from the database in a single operation.
         /// </summary>
         /// <typeparam name="T"></typeparam>
