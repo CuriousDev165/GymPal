@@ -2,7 +2,7 @@
 
 namespace GymPal.Models
 {
-    public class WeightTrainingMovement : Movement
+    public record WeightTrainingMovement : Movement
     {
         [NotNull, MaxLength(40)]
         public required string Name { get; set; }
