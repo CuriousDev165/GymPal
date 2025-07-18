@@ -12,8 +12,6 @@ namespace GymPal.UnitTests.ViewModelTests
         private readonly Mock<IRepository> mockRepo = new();
         private readonly MovementService movementService = new();
 
-        private List<string> Movements { get; set; } = [];
-
         public MainPageViewModelTests()
         {
             viewModel = new (mockRepo.Object, movementService);
