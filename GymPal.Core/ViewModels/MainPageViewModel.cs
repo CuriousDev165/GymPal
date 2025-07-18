@@ -5,7 +5,7 @@ using GymPal.Models;
 using GymPal.Core.Services;
 using System.Collections.ObjectModel;
 
-namespace GymPal.ViewModels
+namespace GymPal.Core.ViewModels
 {
     public partial class MainPageViewModel(IRepository _repo, MovementService _movementService) : ObservableObject
     {
