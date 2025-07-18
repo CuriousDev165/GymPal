@@ -1,4 +1,4 @@
-﻿using GymPal.Interfaces;
+﻿using GymPal.Core.Interfaces;
 using GymPal.Models;
 
 namespace GymPal.Core.Repositories

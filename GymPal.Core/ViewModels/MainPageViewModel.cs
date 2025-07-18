@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using GymPal.Interfaces;
+using GymPal.Core.Interfaces;
 using GymPal.Models;
 using System.Collections.ObjectModel;
 
