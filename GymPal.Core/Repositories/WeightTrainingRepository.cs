@@ -1,7 +1,7 @@
 ﻿using GymPal.Interfaces;
 using GymPal.Models;
 
-namespace GymPal.Repositories
+namespace GymPal.Core.Repositories
 {
     // Repository for working with weight training records in a database.
     public class WeightTrainingRepository : IRepository
