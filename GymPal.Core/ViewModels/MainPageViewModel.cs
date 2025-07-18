@@ -2,19 +2,18 @@
 using CommunityToolkit.Mvvm.Input;
 using GymPal.Core.Interfaces;
 using GymPal.Models;
+using GymPal.Core.Services;
 using System.Collections.ObjectModel;
 
 namespace GymPal.ViewModels
 {
-    public partial class MainPageViewModel(IRepository _repo) : ObservableObject
+    public partial class MainPageViewModel(IRepository _repo, MovementService _movementService) : ObservableObject
     {
         private readonly IRepository repo = _repo;
+        private readonly MovementService movementService = _movementService;
 
         [ObservableProperty]
         public partial string NewMovement { get; set; }
-
-        [ObservableProperty]
-        public partial ObservableCollection<string> Movements { get; set; } = [];
         [ObservableProperty]
         public partial string CurrentMovement { get; set; }
         // Defaults to the first set when the page loads.
@@ -33,7 +32,7 @@ namespace GymPal.ViewModels
             if(rowsAffected == 1)
             {
                 // Refresh the movement list.
-                Movements.Clear();
+                movementService.Movements.Clear();
                 await GetMovementsAsync();
             }
 
@@ -47,7 +46,7 @@ namespace GymPal.ViewModels
             var movements = await repo.GetRecordsAsync(new Movement { Name = string.Empty });
             foreach(var movement in movements)
             {
-                Movements.Add(movement.Name);
+                movementService.Movements.Add(movement.Name);
             }
         }
 
