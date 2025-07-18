@@ -11,4 +11,9 @@
             <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
     </TabBar>
+    <TabBar>
+        <Tab Title="Records" Icon="recordstabicon.png">
+            <ShellContent Route="RecordsPage" ContentTemplate="{DataTemplate local:RecordsPage}" />
+        </Tab>
+    </TabBar>
 </Shell>

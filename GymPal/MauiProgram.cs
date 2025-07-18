@@ -4,6 +4,7 @@ using GymPal.Core.Repositories;
 using GymPal.Core.Services;
 using Microsoft.Extensions.Logging;
 using GymPal.Models;
+using GymPal.Pages;
 
 namespace GymPal
 {
@@ -22,6 +23,7 @@ namespace GymPal
 
             // Register pages here.
             builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<RecordsPage>();
 
             // Register viewmodels here.
             builder.Services.AddSingleton<MainPageViewModel>();
