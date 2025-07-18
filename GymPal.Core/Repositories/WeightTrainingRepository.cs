@@ -11,17 +11,17 @@ namespace GymPal.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<int> DeleteRecordAsync<Movement>(Movement argument) where Movement : class
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<Movement> GetRecordAsync<Movement>(Movement argument) where Movement : class
         {
             throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<Movement>> GetRecordsAsync<Movement>(Movement argument) where Movement : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<int> DeleteRecordAsync<Movement>(Movement argument) where Movement : class
         {
             throw new NotImplementedException();
         }
