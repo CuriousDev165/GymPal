@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace GymPal.Core.ViewModels
 {
-    public partial class RecordsViewModel(IRepository _repo, MovementService _movementService) : ObservableObject
+    public partial class RecordsViewModel(IRepository<WeightTrainingMovement> _repo, MovementService _movementService) : ObservableObject
     {
-        private readonly IRepository repo = _repo;
+        private readonly IRepository<WeightTrainingMovement> repo = _repo;
         private readonly MovementService movementService = _movementService;
         [ObservableProperty]
         public partial string CurrentMovement { get; set; }
@@ -25,9 +25,10 @@ namespace GymPal.Core.ViewModels
         {
             movementService.Movements.Clear();
 
-            var movements = await repo.GetRecordsAsync(new Movement { Name = string.Empty });
+            var movements = await repo.GetRecordsAsync(new WeightTrainingMovement { Name = string.Empty });
             foreach(var movement in movements)
             {
+                if(movement.Name != null)
                 movementService.Movements.Add(movement.Name);
             }
         }
@@ -37,7 +38,7 @@ namespace GymPal.Core.ViewModels
         {
             MovementRecords.Clear();
 
-            var records = await repo.GetRecordsAsync(new Movement { Name = CurrentMovement });
+            var records = await repo.GetRecordsAsync(new WeightTrainingMovement { Name = CurrentMovement });
             foreach(WeightTrainingMovement record in records.Cast<WeightTrainingMovement>())
             {
                 MovementRecords.Add(new WeightTrainingMovement

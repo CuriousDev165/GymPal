@@ -1,7 +1,7 @@
 ﻿using GymPal.Core.Interfaces;
 using GymPal.Core.Services;
+using GymPal.Core.ViewModels;
 using GymPal.Models;
-using GymPal.ViewModels;
 using Moq;
 
 namespace GymPal.UnitTests.ViewModelTests
@@ -9,7 +9,7 @@ namespace GymPal.UnitTests.ViewModelTests
     public class MainPageViewModelTests
     {
         private readonly MainPageViewModel viewModel;
-        private readonly Mock<IRepository> mockRepo = new();
+        private readonly Mock<IRepository<WeightTrainingMovement>> mockRepo = new();
         private readonly MovementService movementService = new();
 
         public MainPageViewModelTests()
@@ -22,9 +22,9 @@ namespace GymPal.UnitTests.ViewModelTests
         {
             // Arrange
             viewModel.NewMovement = "New Movement";
-            mockRepo.Setup(repo => repo.AddRecordAsync(It.IsAny<Movement>()))
+            mockRepo.Setup(repo => repo.AddRecordAsync(It.IsAny<WeightTrainingMovement>()))
                 .ReturnsAsync(1);
-            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<Movement>()))
+            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<WeightTrainingMovement>()))
                 .ReturnsAsync([new() { Name = "New Movement" }]);
 
             // Act
@@ -40,7 +40,7 @@ namespace GymPal.UnitTests.ViewModelTests
         public async Task GetMovementsAsync_RefreshesMovementList()
         {
             // Arrange
-            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<Movement>())).
+            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<WeightTrainingMovement>())).
                 ReturnsAsync([new() { Name = "Movement 1" }]);
 
             // Act

@@ -3,6 +3,7 @@ using GymPal.Core.ViewModels;
 using GymPal.Core.Repositories;
 using GymPal.Core.Services;
 using Microsoft.Extensions.Logging;
+using GymPal.Models;
 
 namespace GymPal
 {
@@ -30,7 +31,11 @@ namespace GymPal
             builder.Services.AddSingleton<MovementService>();
 
             // Register repositories here.
-            builder.Services.AddSingleton<IRepository, WeightTrainingRepository>();
+            builder.Services.AddSingleton<IRepository<WeightTrainingMovement>, WeightTrainingRepository>(provider => 
+            {
+                string dbPath = Path.Combine(FileSystem.AppDataDirectory, "movements.db3");
+                return new WeightTrainingRepository(dbPath);
+            });
 
 #if DEBUG
             builder.Logging.AddDebug();

@@ -7,9 +7,9 @@ using System.Collections.ObjectModel;
 
 namespace GymPal.Core.ViewModels
 {
-    public partial class MainPageViewModel(IRepository _repo, MovementService _movementService) : ObservableObject
+    public partial class MainPageViewModel(IRepository<WeightTrainingMovement> _repo, MovementService _movementService) : ObservableObject
     {
-        private readonly IRepository repo = _repo;
+        private readonly IRepository<WeightTrainingMovement> repo = _repo;
         private readonly MovementService movementService = _movementService;
 
         [ObservableProperty]
@@ -28,7 +28,7 @@ namespace GymPal.Core.ViewModels
         [RelayCommand]
         public async Task AddNewMovementAsync()
         {
-            var rowsAffected = await repo.AddRecordAsync(new Movement { Name = NewMovement });
+            var rowsAffected = await repo.AddRecordAsync(new WeightTrainingMovement { Name = NewMovement });
             if(rowsAffected == 1)
             {
                 // Refresh the movement list.
@@ -43,10 +43,10 @@ namespace GymPal.Core.ViewModels
         [RelayCommand]
         public async Task GetMovementsAsync()
         {
-            var movements = await repo.GetRecordsAsync(new Movement { Name = string.Empty });
+            var movements = await repo.GetRecordsAsync(new WeightTrainingMovement { Name = string.Empty });
             foreach(var movement in movements)
             {
-                movementService.Movements.Add(movement.Name);
+                movementService.Movements.Add(movement.Name ?? string.Empty);
             }
         }
 

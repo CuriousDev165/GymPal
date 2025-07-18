@@ -3,31 +3,26 @@ using GymPal.Core.Services;
 using GymPal.Core.ViewModels;
 using GymPal.Models;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GymPal.UnitTests.ViewModelTests
 {
     public class RecordsViewModelTests
     {
         private readonly RecordsViewModel viewModel;
-        private readonly Mock<IRepository> mockRepo = new();
+        private readonly Mock<IRepository<WeightTrainingMovement>> mockRepo = new();
         private readonly MovementService movementService = new();
 
         public RecordsViewModelTests()
         {
-            viewModel = new(mockRepo.Object, movementService);
+            viewModel = new (mockRepo.Object, movementService);
         }
 
         [Fact]
         public async Task GetMovementsAsync_RefreshesMovementList()
         {
             // Arrange
-            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<Movement>()))
-                .ReturnsAsync([new Movement { Name = "Movement 1" }]);
+            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<WeightTrainingMovement>()))
+                .ReturnsAsync([new WeightTrainingMovement { Name = "Movement 1" }]);
 
             // Act
             await viewModel.GetMovementsAsync();
@@ -42,7 +37,7 @@ namespace GymPal.UnitTests.ViewModelTests
         {
             // Arrange
             viewModel.CurrentMovement = "Movement 1";
-            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<Movement>()))
+            mockRepo.Setup(repo => repo.GetRecordsAsync(It.IsAny<WeightTrainingMovement>()))
                 .ReturnsAsync([new WeightTrainingMovement { Name = "Movement 1", Date = "2025-01-01", SetNumber = 3, Weight = 100, Reps = 10 }]);
 
             // Act
