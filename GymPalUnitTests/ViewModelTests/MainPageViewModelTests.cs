@@ -1,4 +1,5 @@
 ﻿using GymPal.Core.Interfaces;
+using GymPal.Core.Services;
 using GymPal.Models;
 using GymPal.ViewModels;
 using Moq;
@@ -9,12 +10,13 @@ namespace GymPal.UnitTests.ViewModelTests
     {
         private readonly MainPageViewModel viewModel;
         private readonly Mock<IRepository> mockRepo = new();
+        private readonly MovementService movementService = new();
 
         private List<string> Movements { get; set; } = [];
 
         public MainPageViewModelTests()
         {
-            viewModel = new (mockRepo.Object);
+            viewModel = new (mockRepo.Object, movementService);
         }
 
         [Fact]
@@ -31,8 +33,8 @@ namespace GymPal.UnitTests.ViewModelTests
             await viewModel.AddNewMovementAsync();
 
             // Assert
-            Assert.Single(viewModel.Movements);
-            Assert.Equal("New Movement", viewModel.Movements[0]);
+            Assert.Single(movementService.Movements);
+            Assert.Equal("New Movement", movementService.Movements[0]);
             Assert.Empty(viewModel.NewMovement);
         }
 
@@ -47,8 +49,8 @@ namespace GymPal.UnitTests.ViewModelTests
             await viewModel.GetMovementsAsync();
 
             // Assert
-            Assert.Single(viewModel.Movements);
-            Assert.Equal("Movement 1", viewModel.Movements[0]);
+            Assert.Single(movementService.Movements);
+            Assert.Equal("Movement 1", movementService.Movements[0]);
         }
 
         [Fact]
