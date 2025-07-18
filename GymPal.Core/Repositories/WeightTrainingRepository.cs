@@ -1,4 +1,5 @@
 ﻿using GymPal.Interfaces;
+using GymPal.Models;
 
 namespace GymPal.Repositories
 {
@@ -10,22 +11,17 @@ namespace GymPal.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<int> AddRecords<WeightTrainingMovement>(IEnumerable<WeightTrainingMovement> records) where WeightTrainingMovement : class
+        public async Task<int> DeleteRecordAsync<Movement>(Movement argument) where Movement : class
         {
             throw new NotImplementedException();
         }
 
-        public async Task<int> DeleteRecordAsync<WeightTrainingMovement>(WeightTrainingMovement argument) where WeightTrainingMovement : class
+        public async Task<Movement> GetRecordAsync<Movement>(Movement argument) where Movement : class
         {
             throw new NotImplementedException();
         }
 
-        public async Task<WeightTrainingMovement> GetRecordAsync<WeightTrainingMovement>(WeightTrainingMovement argument) where WeightTrainingMovement : class
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<WeightTrainingMovement>> GetRecordsAsync<WeightTrainingMovement>(WeightTrainingMovement argument) where WeightTrainingMovement : class
+        public async Task<IEnumerable<Movement>> GetRecordsAsync<Movement>(Movement argument) where Movement : class
         {
             throw new NotImplementedException();
         }

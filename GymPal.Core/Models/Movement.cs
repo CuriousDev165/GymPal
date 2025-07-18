@@ -8,5 +8,7 @@ namespace GymPal.Models
     {
         [PrimaryKey, Unique, AutoIncrement]
         public int Id { get; set; }
+        [NotNull, MaxLength(40)]
+        public required string Name { get; set; }
     }
 }
