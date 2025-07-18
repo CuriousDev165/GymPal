@@ -6,9 +6,9 @@
     xmlns:local="clr-namespace:GymPal"
     Title="GymPal">
 
-    <ShellContent
-        Title="GymPal"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
+    <TabBar>
+        <Tab Title="Weight Training" Icon="weighttrainingtabicon.png">
+            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </TabBar>
 </Shell>
