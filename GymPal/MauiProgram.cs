@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using GymPal.Core.Services;
+using Microsoft.Extensions.Logging;
 
 namespace GymPal
 {
@@ -22,6 +23,7 @@ namespace GymPal
             builder.Services.AddSingleton<ViewModels.MainPageViewModel>();
 
             // Register services here.
+            builder.Services.AddSingleton<MovementService>();
 
 #if DEBUG
             builder.Logging.AddDebug();
