@@ -19,6 +19,7 @@ namespace GymPal
             builder.Services.AddSingleton<MainPage>();
 
             // Register viewmodels here.
+            builder.Services.AddSingleton<ViewModels.MainPageViewModel>();
 
             // Register services here.
 
