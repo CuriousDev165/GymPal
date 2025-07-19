@@ -2,11 +2,74 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GymPal.Pages.RecordsPage"
-             Title="RecordsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:model="clr-namespace:GymPal.Models;assembly=GymPal.Core"
+             xmlns:viewmodel="clr-namespace:GymPal.Core.ViewModels;assembly=GymPal.Core"
+             x:DataType="viewmodel:RecordsPageViewModel"
+             Title="RecordsPage"
+             Style="{StaticResource PageStyle}">
+
+    <Grid RowDefinitions="50,50,*" ColumnDefinitions="*,*,*,*">
+        <Label Grid.Row="0"
+               Grid.ColumnSpan="1"
+               Text="Select a Movement:"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Picker Grid.Row="0"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                ItemsSource="{Binding Movements}"
+                SelectedItem="{Binding CurrentMovement}"/>
+        <Button Grid.Row="0"
+                Grid.Column="3"
+                Text="GO"
+                Command="{Binding GetMovementRecordsCommand}"/>
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Text="Date"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Label Grid.Row="1"
+               Grid.Column="1"
+               Text="Set Number"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Label Grid.Row="1"
+               Grid.Column="2"
+               Text="Weight"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <Label Grid.Row="1"
+               Grid.Column="3"
+               Text="Reps"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <CollectionView
+            ItemsSource="{Binding MovementRecords}"
+            Grid.Row="2"
+            Grid.ColumnSpan="4">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:WeightTrainingMovement">
+                    <Grid ColumnDefinitions="*,*,*,*">
+                        <Label Grid.Column="0"
+                               Text="{Binding Date}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="1"
+                               Text="{Binding SetNumber}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="2"
+                               Text="{Binding Weight}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                        <Label Grid.Column="3"
+                               Text="{Binding Reps}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
 </ContentPage>
