@@ -1,8 +1,146 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GymPal.MainPage">
+             xmlns:model="clr-namespace:GymPal.Models;assembly=GymPal.Core"
+             xmlns:viewmodel="clr-namespace:GymPal.Core.ViewModels;assembly=GymPal.Core"
+             x:DataType="viewmodel:MainPageViewModel"
+             x:Class="GymPal.MainPage"
+             Style="{StaticResource PageStyle}">
 
-    
-
+    <Grid
+        RowDefinitions="*,*,*,*,*,*,*,*,*,*"
+        ColumnDefinitions="75,10,75,*,*"
+        RowSpacing="10"
+        MaximumHeightRequest="480"
+        MaximumWidthRequest="400">
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="5" 
+            Text="Add a New Movement"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Border
+            Grid.Row="1"
+            Grid.ColumnSpan="5"
+            WidthRequest="200">
+            <Entry
+                WidthRequest="200"
+                Text="{Binding NewMovement}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Border>
+        <Button
+            Grid.Row="2"
+            Grid.ColumnSpan="5"
+            Margin="0,20,0,0"
+            HeightRequest="40"
+            WidthRequest="200"
+            Text="ADD"
+            HorizontalOptions="Center"
+            Command="{Binding AddNewMovementCommand}"/>
+        <Label
+            Grid.Row="3"
+            Grid.ColumnSpan="5"
+            Margin="0,15,0,0"
+            Text="OR"
+            FontSize="25"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Label
+            Grid.Row="4"
+            Grid.ColumnSpan="5"
+            Text="Select a Movement"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Border
+            Grid.Row="5"
+            Grid.ColumnSpan="5"
+            WidthRequest="175">
+            <Picker
+                WidthRequest="175"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                ItemsSource="{Binding Movements}"
+                SelectedItem="{Binding CurrentMovement}"/>
+        </Border>
+        <Label
+            Grid.Row="6"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Text="Set Number"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Label
+            Grid.Row="6"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            Text="Weight"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Label
+            Grid.Row="6"
+            Grid.Column="4"
+            Grid.ColumnSpan="1"
+            Text="Reps"
+            FontSize="20"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Button
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="1"
+            Text="-"
+            HorizontalOptions="Center"
+            Command="{Binding DecrementSetNumberCommand}"/>
+        <Label
+            x:Name="setLabel"
+            Grid.Row="7"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            Text="{Binding SetNumber}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        <Button
+            Grid.Row="7"
+            Grid.Column="2"
+            Grid.ColumnSpan="1"
+            Text="+"
+            HorizontalOptions="Center"
+            Command="{Binding IncrementSetNumberCommand}"/>
+        <Border
+            Grid.Row="7"
+            Grid.Column="3"
+            Grid.ColumnSpan="1"
+            WidthRequest="75">
+            <Entry
+                WidthRequest="75"
+                HorizontalOptions="Center"
+                Keyboard="Numeric"
+                Text="{Binding Weight}"/>
+        </Border>
+        <Border
+            Grid.Row="7"
+            Grid.Column="4"
+            Grid.ColumnSpan="1"
+            WidthRequest="75">
+            <Entry
+                WidthRequest="75"
+                HorizontalOptions="Center"
+                Keyboard="Numeric"
+                Text="{Binding Reps}"/>
+        </Border>
+        <Button
+            Grid.Row="8"
+            Grid.Column="0"
+            Grid.ColumnSpan="5"
+            HeightRequest="40"
+            WidthRequest="200"
+            Text="Save Set"
+            HorizontalOptions="Center"
+            Command="{Binding SaveSetCommand}"/>
+    </Grid>
 </ContentPage>
