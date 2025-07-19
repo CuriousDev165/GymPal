@@ -6,7 +6,7 @@ using System.IO.Enumeration;
 namespace GymPal.Core.Repositories
 {
     // Repository for working with weight training records in a database.
-    public class WeightTrainingRepository : IRepository<WeightTrainingMovement>
+    public class WeightTrainingRepository : IRepository
     {
 
         private readonly SQLiteAsyncConnection conn;
@@ -21,17 +21,19 @@ namespace GymPal.Core.Repositories
             await conn.CreateTableAsync<Movement>();
             await conn.CreateTableAsync<WeightTrainingMovement>();
         }
+        
+        public async Task<int> AddRecordAsync(Movement movement) => await conn.InsertAsync(movement);
 
         public async Task<int> AddRecordAsync(WeightTrainingMovement movement) => await conn.InsertAsync(movement);
 
 
         // Retrieve movement names from the database.
-        public async Task<List<WeightTrainingMovement>> GetRecordsAsync()
+        public async Task<List<Movement>> GetRecordsAsync()
         {
             var records = await conn.Table<Movement>().ToListAsync();
 
-            List<WeightTrainingMovement> movements = [];
-            foreach(WeightTrainingMovement record in records)
+            List<Movement> movements = [];
+            foreach (var record in records)
             {
                 movements.Add(record);
             }
@@ -45,7 +47,7 @@ namespace GymPal.Core.Repositories
                 .Where(m => m.Name == movement.Name)
                 .ToListAsync();
 
-        public async Task<int> DeleteRecordAsync(WeightTrainingMovement movement)
+        public async Task<int> DeleteRecordAsync(Movement movement)
         {
             string query = "$DELETE FROM movement WHERE name = ?";
             int rowsAffected = await conn.ExecuteAsync(query, movement.Name);

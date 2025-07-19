@@ -7,11 +7,12 @@ using System.Collections.ObjectModel;
 
 namespace GymPal.Core.ViewModels
 {
-    public partial class MainPageViewModel(IRepository<WeightTrainingMovement> _repo, MovementService _movementService) : ObservableObject
+    public partial class MainPageViewModel(IRepository _repo, MovementService _movementService) : ObservableObject
     {
-        private readonly IRepository<WeightTrainingMovement> repo = _repo;
+        private readonly IRepository repo = _repo;
         private readonly MovementService movementService = _movementService;
 
+        public ObservableCollection<string> Movements => movementService.Movements;
         [ObservableProperty]
         public partial string NewMovement { get; set; }
         [ObservableProperty]
@@ -28,7 +29,7 @@ namespace GymPal.Core.ViewModels
         [RelayCommand]
         public async Task AddNewMovementAsync()
         {
-            var rowsAffected = await repo.AddRecordAsync(new WeightTrainingMovement { Name = NewMovement });
+            var rowsAffected = await repo.AddRecordAsync(new Movement { Name = NewMovement });
             if(rowsAffected == 1)
             {
                 // Refresh the movement list.
@@ -43,20 +44,11 @@ namespace GymPal.Core.ViewModels
         [RelayCommand]
         public async Task GetMovementsAsync()
         {
-            var movements = await repo.GetRecordsAsync(new WeightTrainingMovement { Name = string.Empty });
+            var movements = await repo.GetRecordsAsync();
             foreach(var movement in movements)
             {
                 movementService.Movements.Add(movement.Name ?? string.Empty);
             }
-        }
-
-        // Resets the set number, weight, and reps to their default values when either the current movement is changed or a set is saved.
-        [RelayCommand]
-        public void ResetSetValues()
-        {
-            SetNumber = 1;
-            Weight = 0;
-            Reps = 0;
         }
 
         // Save the current set to the database.
@@ -73,6 +65,26 @@ namespace GymPal.Core.ViewModels
             });
 
             ResetSetValues();
+        }
+
+        // Resets the set number, weight, and reps to their default values when a set is saved.
+        [RelayCommand]
+        public void ResetSetValues()
+        {
+            Weight = 0;
+            Reps = 0;
+        }
+
+        [RelayCommand]
+        public void IncrementSetNumber()
+        {
+           SetNumber++;
+        }
+
+        [RelayCommand]
+        public void DecrementSetNumber()
+        {
+            SetNumber--;
         }
     }
 }

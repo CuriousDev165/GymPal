@@ -27,13 +27,13 @@ namespace GymPal
 
             // Register viewmodels here.
             builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddSingleton<RecordsViewModel>();
+            builder.Services.AddSingleton<RecordsPageViewModel>();
 
             // Register services here.
             builder.Services.AddSingleton<MovementService>();
 
             // Register repositories here.
-            builder.Services.AddSingleton<IRepository<WeightTrainingMovement>, WeightTrainingRepository>(provider => 
+            builder.Services.AddSingleton<IRepository, WeightTrainingRepository>(provider => 
             {
                 string dbPath = Path.Combine(FileSystem.AppDataDirectory, "movements.db3");
                 return new WeightTrainingRepository(dbPath);

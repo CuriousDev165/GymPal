@@ -8,8 +8,8 @@ namespace GymPal.UnitTests.ViewModelTests
 {
     public class RecordsViewModelTests
     {
-        private readonly RecordsViewModel viewModel;
-        private readonly Mock<IRepository<WeightTrainingMovement>> mockRepo = new();
+        private readonly RecordsPageViewModel viewModel;
+        private readonly Mock<IRepository> mockRepo = new();
         private readonly MovementService movementService = new();
 
         public RecordsViewModelTests()

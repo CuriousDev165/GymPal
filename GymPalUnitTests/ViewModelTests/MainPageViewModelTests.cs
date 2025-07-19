@@ -9,7 +9,7 @@ namespace GymPal.UnitTests.ViewModelTests
     public class MainPageViewModelTests
     {
         private readonly MainPageViewModel viewModel;
-        private readonly Mock<IRepository<WeightTrainingMovement>> mockRepo = new();
+        private readonly Mock<IRepository> mockRepo = new();
         private readonly MovementService movementService = new();
 
         public MainPageViewModelTests()
