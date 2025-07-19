@@ -4,5 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    
+    <Style x:Key="TabBarStyle" TargetType="Shell">
+        <Setter Property="Shell.TabBarForegroundColor" Value="#FFBF00"/>
+        <Setter Property="Shell.TabBarBackgroundColor" Value="#3B2C94"/>
+        <Setter Property="Shell.TabBarUnselectedColor" Value="#AEAEAE"/>
+    </Style>
+    <Style x:Key="PageStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="#B6B8E8"/>
+    </Style>
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="Black"/>
+    </Style>
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="#3B2C94"/>
+        <Setter Property="TextColor" Value="White"/>
+    </Style>
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+    <Style TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="White"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+    <Style TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 8"/>
+    </Style>
 </ResourceDictionary>
