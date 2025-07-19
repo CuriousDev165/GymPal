@@ -1,26 +1,25 @@
 ﻿using GymPal.Core.ViewModels;
 
-namespace GymPal
+namespace GymPal;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    private bool isFirstLoad = true;
+
+    public MainPage(MainPageViewModel viewModel)
     {
-        private bool isFirstLoad = true;
+        InitializeComponent();
+        BindingContext = viewModel;
+    }
 
-        public MainPage(MainPageViewModel viewModel)
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (isFirstLoad && BindingContext is MainPageViewModel viewModel)
         {
-            InitializeComponent();
-            BindingContext = viewModel;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (isFirstLoad && BindingContext is MainPageViewModel viewModel)
-            {
-                viewModel.GetMovementsCommand.Execute(null);
-                isFirstLoad = false;
-            }
+            viewModel.GetMovementsCommand.Execute(null);
+            isFirstLoad = false;
         }
     }
 }
