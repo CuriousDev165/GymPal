@@ -6,7 +6,7 @@ namespace GymPal.Models
     public record WeightTrainingMovement : Movement
     {
 
-        [Column("date"),NotNull]
+        [Column("date")]
         public string? Date { get; set; }
         [Column("set_number")]
         public int SetNumber { get; set; }
